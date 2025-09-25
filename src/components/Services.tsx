@@ -1,56 +1,58 @@
 import React from 'react';
 import { Shield, Users, AlertTriangle, Filter, Search, Network } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Services: React.FC = () => {
+  const { t, isRTL } = useLanguage();
+
   const services = [
     {
       icon: Shield,
-      title: 'Auth Service',
-      description: 'Secure authentication and user registration with OAuth integration, JWT tokens, and multi-factor authentication.',
-      features: ['OAuth Integration', 'MFA Support', 'JWT Tokens', 'Password Reset']
+      title: t('services.auth.title'),
+      description: t('services.auth.description'),
+      features: [t('services.auth.feature1'), t('services.auth.feature2'), t('services.auth.feature3'), t('services.auth.feature4')]
     },
     {
       icon: Users,
-      title: 'User Service',
-      description: 'Comprehensive user profile management with RBAC and GDPR compliance for enterprise security.',
-      features: ['Profile Management', 'RBAC Controls', 'GDPR Compliance', 'Company Data']
+      title: t('services.user.title'),
+      description: t('services.user.description'),
+      features: [t('services.user.feature1'), t('services.user.feature2'), t('services.user.feature3'), t('services.user.feature4')]
     },
     {
       icon: AlertTriangle,
-      title: 'Red Team Service',
-      description: 'Advanced negative testing to identify vulnerabilities and ensure your LLM handles malicious queries safely.',
-      features: ['Negative Testing', 'Vulnerability Scanning', 'Bias Detection', 'Security Reports']
+      title: t('services.redTeam.title'),
+      description: t('services.redTeam.description'),
+      features: [t('services.redTeam.feature1'), t('services.redTeam.feature2'), t('services.redTeam.feature3'), t('services.redTeam.feature4')]
     },
     {
       icon: Filter,
-      title: 'Blue Team Service',
-      description: 'Real-time prompt sanitization with advanced filtering to prevent harmful content from reaching your LLM.',
-      features: ['Prompt Sanitization', 'Content Filtering', 'Real-time Processing', 'Traceability']
+      title: t('services.blueTeam.title'),
+      description: t('services.blueTeam.description'),
+      features: [t('services.blueTeam.feature1'), t('services.blueTeam.feature2'), t('services.blueTeam.feature3'), t('services.blueTeam.feature4')]
     },
     {
       icon: Search,
-      title: 'Agent Service',
-      description: 'Comprehensive LLM scanning and performance analysis with detailed reporting and improvement suggestions.',
-      features: ['Performance Analysis', 'Capability Assessment', 'Response Time Metrics', 'Detailed Reports']
+      title: t('services.agent.title'),
+      description: t('services.agent.description'),
+      features: [t('services.agent.feature1'), t('services.agent.feature2'), t('services.agent.feature3'), t('services.agent.feature4')]
     },
     {
       icon: Network,
-      title: 'API Gateway',
-      description: 'Centralized entry point with intelligent routing, rate limiting, and comprehensive monitoring capabilities.',
-      features: ['Request Routing', 'Rate Limiting', 'Service Orchestration', 'Monitoring']
+      title: t('services.gateway.title'),
+      description: t('services.gateway.description'),
+      features: [t('services.gateway.feature1'), t('services.gateway.feature2'), t('services.gateway.feature3'), t('services.gateway.feature4')]
     }
   ];
 
   return (
-    <section id="services" className="py-16 bg-white">
+    <section id="services" className={`py-16 bg-white ${isRTL ? 'rtl' : 'ltr'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Comprehensive LLM Testing Services
+            {t('services.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our microservices architecture provides complete coverage for LLM security, 
-            performance, and reliability testing in enterprise environments.
+            {t('services.description')}
           </p>
         </div>
 
@@ -69,8 +71,8 @@ const Services: React.FC = () => {
               
               <ul className="space-y-3">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                  <li key={featureIndex} className={`flex items-center text-sm text-gray-700 ${isRTL ? 'space-x-reverse' : ''}`}>
+                    <div className={`w-2 h-2 bg-blue-600 rounded-full ${isRTL ? 'ml-3' : 'mr-3'}`}></div>
                     {feature}
                   </li>
                 ))}

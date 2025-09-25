@@ -1,55 +1,58 @@
 import React from 'react';
 import { Lock, Zap, BarChart3, Globe, Clock, Layers } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Features: React.FC = () => {
+  const { t, isRTL } = useLanguage();
+
   const features = [
     {
       icon: Lock,
-      title: 'Enterprise Security',
-      description: 'End-to-end encryption, multi-factor authentication, and role-based access control for maximum security.',
-      stats: '99.9% Security Rating'
+      title: t('features.security.title'),
+      description: t('features.security.description'),
+      stats: t('features.security.stats')
     },
     {
       icon: Zap,
-      title: 'High Performance',
-      description: 'Sub-second response times with the ability to handle 10,000+ simultaneous testing requests.',
-      stats: '<1s Response Time'
+      title: t('features.performance.title'),
+      description: t('features.performance.description'),
+      stats: t('features.performance.stats')
     },
     {
       icon: BarChart3,
-      title: 'Advanced Analytics',
-      description: 'Comprehensive reporting with detailed insights into LLM performance, vulnerabilities, and improvements.',
-      stats: '50+ Metrics Tracked'
+      title: t('features.analytics.title'),
+      description: t('features.analytics.description'),
+      stats: t('features.analytics.stats')
     },
     {
       icon: Globe,
-      title: 'Global Scalability',
-      description: 'Horizontally scalable architecture deployed across multiple regions for optimal performance.',
-      stats: '99.99% Uptime'
+      title: t('features.scalability.title'),
+      description: t('features.scalability.description'),
+      stats: t('features.scalability.stats')
     },
     {
       icon: Clock,
-      title: 'Real-time Testing',
-      description: 'Continuous monitoring and real-time testing capabilities with instant vulnerability detection.',
-      stats: '24/7 Monitoring'
+      title: t('features.realtime.title'),
+      description: t('features.realtime.description'),
+      stats: t('features.realtime.stats')
     },
     {
       icon: Layers,
-      title: 'Microservices Architecture',
-      description: 'Modular, independently scalable services with robust communication and failover mechanisms.',
-      stats: '6 Core Services'
+      title: t('features.microservices.title'),
+      description: t('features.microservices.description'),
+      stats: t('features.microservices.stats')
     }
   ];
 
   return (
-    <section id="features" className="py-16 bg-gray-50">
+    <section id="features" className={`py-16 bg-gray-50 ${isRTL ? 'rtl' : 'ltr'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Why Choose LLMSecure?
+            {t('features.title')}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Built for enterprise requirements with uncompromising security, performance, and scalability.
+            {t('features.description')}
           </p>
         </div>
 
@@ -72,13 +75,13 @@ const Features: React.FC = () => {
 
         <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 lg:p-12 text-center">
           <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            Ready to Secure Your LLM Infrastructure?
+            {t('features.cta.title')}
           </h3>
           <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-            Join leading enterprises who trust LLMSecure to test and secure their AI models.
+            {t('features.cta.description')}
           </p>
           <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
-            Schedule a Demo
+            {t('features.cta.button')}
           </button>
         </div>
       </div>
